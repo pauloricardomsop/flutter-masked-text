@@ -188,8 +188,10 @@ class MoneyMaskedTextController extends TextEditingController {
 
     parts.insert(parts.length - precision, '.');
 
-    return double.parse(parts.join());
-  }
+    var value = parts.join();
+
+    return value == '.' ? 0.0 : double.parse(parts.join());
+  }  
 
   _validateConfig() {
     bool rightSymbolHasNumbers = _getOnlyNumbers(this.rightSymbol).length > 0;
